@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <!-- Novo -->
+  <!--<subitem url="#" text="Gerenciamento" title="true">
+    <item url="Unidade.aspx" text="Unidade" title="false"/>
+    <item url="CadDeposito.aspx" text="Depósito" title="false"/>
+    <item url="CadUsuario.aspx" text="Usuário" title="false"/>
+    <item url="Relatorio.aspx" text="Relatório" title="false"/>
+    <item url="Sincronizar.aspx" text="Sincronizar" title="false"/>
+
+  </subitem>-->
+
+  <subitem url="CadProduto.aspx" text="Produto" title="true">
+
+  </subitem>
+
+  <subitem url="Entrada.aspx" text="Entrada" title="true">
+
+  </subitem>
+
+  <!--<subitem url="Planejamento.aspx" text="Planejamento" title="true">
+
+  </subitem>-->
+
+  <subitem url="#" text="Saída" title="true">
+    <item url="Saida.aspx" text="Saída" title="false"/>
+    <item url="Retorno.aspx" text="Retorno" title="false"/>
+  </subitem>
+
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15f2ddc032c34905a291d8cc4c69f0be" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="SysSenacModel.GC_AFASTADO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_DEMISSAO_NOVO" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_DIRETORIO" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_FERIAS" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_FERIAS_SENDS_PENDENTES" Width="1.5" PointX="1.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_SITUACAO" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.GC_USUARIOS" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_AUDITORIA" Width="2.25" PointX="8.875" PointY="0.625" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_COLABORADOR" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_DIRETORIOS" Width="1.5" PointX="9.125" PointY="3.5" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_FERIAS_SENDS_PENDENTES" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_STATUS" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_SUBSTITUTO_ARQUIVO" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_USUARIO" Width="1.5" PointX="11.875" PointY="0.625" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_ARQUIVO" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SysSenacModel.CONTRATACAO_SUBSTITUTO" Width="1.5" PointX="12.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

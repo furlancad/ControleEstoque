@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6dc0ccfafaca4183b15312679499a7c9" Name="Diagram1">
+        <EntityTypeShape EntityType="EstoqueModel.sysdiagrams" Width="1.5" PointX="8.0078989341891837" PointY="20.996417159678607" />
+        <EntityTypeShape EntityType="EstoqueModel.USUARIO" Width="1.5" PointX="5.25" PointY="23.875" />
+        <EntityTypeShape EntityType="EstoqueModel.ENTRADA" Width="1.5" PointX="9.125" PointY="18.25" />
+        <EntityTypeShape EntityType="EstoqueModel.DEPOSITO" Width="1.5" PointX="8.875" PointY="24" />
+        <AssociationConnector Association="EstoqueModel.FK_USUARIO_DEPOSITO" />
+        <EntityTypeShape EntityType="EstoqueModel.CURSOS" Width="1.5" PointX="3.75" PointY="30.125" />
+        <EntityTypeShape EntityType="EstoqueModel.UNIDADE" Width="1.5" PointX="5.75" PointY="31.375" />
+        <EntityTypeShape EntityType="EstoqueModel.TURMA" Width="1.5" PointX="5.5" PointY="26.625" />
+        <EntityTypeShape EntityType="EstoqueModel.DISCIPLINA" Width="1.5" PointX="1.75" PointY="23.375" />
+        <EntityTypeShape EntityType="EstoqueModel.DISCIPLINA_INSTRUTOR" Width="1.5" PointX="7.5" PointY="27.75" />
+        <EntityTypeShape EntityType="EstoqueModel.INSTRUTOR" Width="1.5" PointX="9.625" PointY="30.75" />
+        <EntityTypeShape EntityType="EstoqueModel.PLANEJAMENTO" Width="1.5" PointX="13.375" PointY="25.375" />
+        <EntityTypeShape EntityType="EstoqueModel.LISTA_BASICA" Width="1.5" PointX="1.5" PointY="28" />
+        <AssociationConnector Association="EstoqueModel.FK_PLANEJAMENTO_LISTA_BASICA" />
+        <EntityTypeShape EntityType="EstoqueModel.ENTRADA_AUXILIAR" Width="1.5" PointX="0.41136044469259697" PointY="2.3307834725504666" />
+        <EntityTypeShape EntityType="EstoqueModel.ITENS_ENTRADA" Width="1.5" PointX="9.4097863609948131" PointY="26.907660034907824" />
+        <EntityTypeShape EntityType="EstoqueModel.PRODUTO" Width="1.5" PointX="13.625" PointY="30.625" />
+        <AssociationConnector Association="EstoqueModel.FK_ITENS_ENTRADA_ENTRADA" />
+        <AssociationConnector Association="EstoqueModel.FK_ITENS_ENTRADA_PRODUTO" />
+        <EntityTypeShape EntityType="EstoqueModel.SAIDA_AUXILIAR" Width="1.5" PointX="15.625" PointY="26.125" />
+        <EntityTypeShape EntityType="EstoqueModel.PLANEJAMENTO_AUXILIAR" Width="1.5" PointX="11.5" PointY="28.5" />
+        <EntityTypeShape EntityType="EstoqueModel.SAIDA" Width="1.5" PointX="17" PointY="29.5" />
+        <EntityTypeShape EntityType="EstoqueModel.PLANEJAMENTO_ITENS_EXTRA" Width="1.5" PointX="18.375" PointY="25.625" />
+        <AssociationConnector Association="EstoqueModel.FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

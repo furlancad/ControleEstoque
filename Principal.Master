@@ -1,0 +1,296 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.Master.cs" Inherits="ControleEstoque.Web.Principal" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Controle de Estoque" />
+    <meta name="author" content="CE" />
+    <title>Controle de Estoque</title>
+    <link href="images/favicon1.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="Content/jquery-ui.css" rel="stylesheet" />    
+    <link href="Content/_layout.css" rel="stylesheet" />
+    <link href="Content/menu.css" rel="stylesheet" />
+    <link href="Content/select2.css" rel="stylesheet" />
+    <link href="Content/app.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-slider.css" rel="stylesheet" />
+    <link href="Content/bootstrap-switch.css" rel="stylesheet" />
+    <link href="Content/awesome.css" rel="stylesheet" />
+    <link href="Content/datepicker.css" rel="stylesheet" />
+    <link href="Content/bootstrap-checkbox.css" rel="stylesheet" />
+    <link href="Content/footable/footable.core.css" rel="stylesheet" />
+    <link href="Content/footable/footable.metro.css" rel="stylesheet" />
+    <link href="Content/realperson.css" rel="stylesheet" />
+    <link href="Content/principal.css" rel="stylesheet" />
+
+    
+    <%--<script src="Scripts/jquery-3.1.1.js"></script>--%>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/select2.js"></script>
+    <script src="Scripts/sortable.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/xcolor.js"></script>
+    <script src="Scripts/datepicker.js"></script>
+    <script src="Scripts/datepicker.pt-BR.js"></script>
+    <script src="Scripts/alphanumeric.js"></script>
+    <script src="Scripts/maskedinput.js"></script>
+    <script src="Scripts/MascaraValidacao.js"></script>
+    <script src="Scripts/bootstrap-checkbox.js"></script>
+    <script src="Scripts/footable/footable.js"></script>
+    <script src="Scripts/footable/footable.filter.js"></script>
+    <script src="Scripts/footable/footable.sort.js"></script>
+    <script src="Scripts/footable/footable.paginate.js"></script>
+    <script src="Scripts/bootstrap-switch.js"></script>
+   <%--<script src="Scripts/bootstrap-filestyle.min.js"></script>--%>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.checkbox > input').checkbox();
+            $('.switch').bootstrapSwitch();
+            $('.form-select2').select2();
+            $('.form-select2-refresh').select2();
+            $('.date').mask("99/99/9999");
+            $('.datetime').mask("99/99/9999 99:99");
+            $('.datepicker').mask("99/99/9999");
+            $('.datepicker').datepicker({ format: "dd/mm/yyyy", language: "pt-BR", autoclose: true, clearBtn: true });
+            $('.numeric').numeric();
+
+            $('.form-select2').on('select2-opening', function () {
+                $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: false });
+            }).on('select2-selecting', function () {
+                if ($(this).hasClass('not-postback')) {
+                    $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: false });
+                }
+            }).on('change', function () {
+                if ($(this).hasClass('not-postback')) {
+                    $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: false });
+                }
+                else {
+                    $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: true });
+                }
+            });
+
+            $('.footable tbody').after("<tfoot class=\"hide-if-no-paging\"><tr><td style=\"text-align: center;\"><div class=\"pagination pagination-centered\"></td></tr></div></tfoot>");
+            $('.footable tfoot tr td').attr("colspan", GetColumns());
+            $('.footable').removeAttr('style');
+            $('.footable').attr("style", "border-collapse: separate");
+            $('.footable').footable().resize(function () {
+                $('.footable tfoot tr td').attr("colspan", GetColumns());
+            });
+            $('.footable-sort-indicator').remove();
+
+            function GetColumns() {
+                var cols = 0;
+                $('.footable thead th').each(function () {
+                    if ($(this).attr("style") == undefined) {
+                        cols++;
+                    }
+                });
+                return cols;
+            }
+
+            $(".panel-heading").click(function () {
+                var collapse = $(this).attr('itemid');
+
+                if ($("div[id=" + collapse + "]").hasClass("in")) {
+                    $('.panel-group .panel-collapse').each(function () { $(this).removeClass("in"); });
+                    $('.panel-group h4 > span').each(function () { $(this).removeClass("glyphicon-chevron-down"); $(this).addClass("glyphicon-chevron-right"); });
+                }
+                else {
+                    $('.panel-group .panel-collapse').each(function () { $(this).removeClass("in"); });
+                    $('.panel-group h4 > span').each(function () { $(this).removeClass("glyphicon-chevron-down"); $(this).addClass("glyphicon-chevron-right"); });
+                    $("div[id=" + collapse + "]").addClass("in");
+                    $(this).find('h4 > span').addClass("glyphicon-chevron-down");
+                }
+            });
+
+            $(".filter, .datetime").on('keydown keypress keyup', function (event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    return false;
+                }
+                event.stopPropagation();
+            });
+            $('button[data-df-button]').on('keydown keypress keyup', function (event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    var defaultbtn = $('button[data-df-button]').attr('data-df-button');
+                    if (defaultbtn != undefined) {
+                        $("#" + defaultbtn).click();
+                    }
+                    return false;
+                }
+            });
+
+            $("nav ul li a").click(function (event) {
+                if ($(this).attr('href') != "#") {
+                   $('body').css("overflow", "hidden");
+                   $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: true });
+                }
+                else {
+                    event.preventDefault();
+                }
+            });
+
+            //$(function () {
+            //    $('.footable > tfoot > tr > td').attr("colspan", GetColumns());
+            //    $('.footable').removeAttr('style');
+            //    $('.footable').attr("style", "border-collapse: separate");
+            //    $('.footable').footable().resize(function () {
+            //        $('.footable > tfoot > tr > td').attr("colspan", GetColumns());
+            //    });
+            //    $('.footable-sort-indicator').remove();
+
+            //    function GetColumns() {
+            //        var cols = 0;
+            //        $('.footable > thead > th').each(function () {
+            //            if ($(this).attr("style") == undefined) {
+            //                cols++;
+            //            }
+            //        });
+            //        return cols;
+            //    }
+            //});
+
+        }).on('submit', function () {
+            $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: true });
+        }).on('ready load', function () {
+            $('#mdlLoading').modal({ backdrop: 'static', keyboard: false, show: false });
+        });
+
+        function ShowAccordion(collapse) {
+            $("div[itemid=" + collapse + "]").click();
+        }
+
+        // Validação dos campos.
+        // "IDValidation" é o atributo necessário para especificar quais os campos que serão avaliados.
+        function ClientValidation(atributo) {
+            var count = 0;
+            var retorno = false;
+
+            $.each($('[' + atributo + ']').not('.display'), function () {
+                var obj = $('[name$="' + $(this).attr(atributo) + '"]');
+                var tagName = obj.prop("tagName").toLowerCase();
+
+                // Todos os componentes.
+                if (obj.val() == "" || obj.val() == null) {
+                    $("[id$='" + $(this).attr("id") + "']").css("border", "1px solid red");
+
+                    if (obj.parent().hasClass("input-group")) {
+                        $("[id$='" + $(this).attr("id") + "']").parent().find("a:not(ul>li>a)").addClass("error");
+                    }
+
+                    count++;
+                }
+                else {
+                    $("[id$='" + $(this).attr("id") + "']").css("border", "");
+
+                    if (obj.parent().hasClass("input-group")) {
+                        $("[id$='" + $(this).attr("id") + "']").parent().find("a:not(ul>li>a)").removeClass("error");
+                    }
+                }
+                // Apenas os da classe "form-select2".
+                if (tagName == "select" && obj.val() == 0 || tagName == "select" && obj.val() == -1) {
+                    $("[id$='" + $(this).attr("id") + "']").parent().find("a").css("border", "1px solid red");
+                    count++;
+                }
+                else {
+                    $("[id$='" + $(this).attr("id") + "']").parent().find("a").css("border", "");
+                }
+
+                // Apenas os da classe "multiselect".
+                if (tagName == "select" && obj.val() == null) {
+                    $("[id$='" + $(this).attr("id") + "']").parent().find("button").css("border", "1px solid red");
+                    count++;
+                }
+                else {
+                    $("[id$='" + $(this).attr("id") + "']").parent().find("button").css("border", "");
+                }
+
+            });
+
+            if (count != 0) {
+                retorno = false;
+            }
+            else {
+                retorno = true;
+            }
+
+            return retorno;
+        }
+    </script>  
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ToolkitScriptManager ID="ScriptManagerMasterSenac" runat="server" EnableScriptGlobalization="true" AsyncPostBackTimeout="6000"/>
+       <%-- <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>--%>
+        <header>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 logo"></div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 titulo">
+                <h1>Controle de Estoque</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
+                <nav class="navbar navbar-primary">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                <span class="sr-only"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div id="menu" class="collapse navbar-collapse">
+                            <ul id="ulMenu" runat="server" class="nav navbar-nav navbar-left">
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <section id="navbar">
+                <span id="toolbar">
+                    <label id="lblUser" runat="server"></label>
+                    &nbsp;
+                    <asp:LinkButton ID="lbSair" runat="server" CssClass="glyphicon glyphicon-off" ToolTip="Sair" OnClick="lbSair_Click"></asp:LinkButton>
+                </span>
+            </section>
+        </header>
+        <section id="main">
+            <div id="watermark" runat="server" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 watermark">
+                <asp:Label ID="lblInforBase" runat="server" Text=""></asp:Label>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+        </section>
+
+        <footer>
+            <img src="Content/images/logo_icon2.png" alt="mini_logo" />&nbsp;SENAC-CE&nbsp;&copy;&nbsp;<span id="copyrightyear"></span>&nbsp;•&nbsp;Serviço Nacional de Aprendizagem Comercial.&nbsp;<a href="http://www.ce.senac.br">www.ce.senac.br</a>.&nbsp;Todos os direitos reservados.
+        </footer>
+
+        <div id="mdlLoading" class="modal text-center">
+            <div id="mdlLoadingBody" class="modal-body">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img alt="" src="Content/images/loading.gif" />
+                    &nbsp;&nbsp;
+                <label class="h3 modal-title">Aguarde...</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

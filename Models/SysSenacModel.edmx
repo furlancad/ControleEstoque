@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SysSenacModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SysSenacModelStoreContainer">
+          <EntitySet Name="CONTRATACAO_ARQUIVO" EntityType="SysSenacModel.Store.CONTRATACAO_ARQUIVO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_AUDITORIA" EntityType="SysSenacModel.Store.CONTRATACAO_AUDITORIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_COLABORADOR" EntityType="SysSenacModel.Store.CONTRATACAO_COLABORADOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_DIRETORIOS" EntityType="SysSenacModel.Store.CONTRATACAO_DIRETORIOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_FERIAS_SENDS_PENDENTES" EntityType="SysSenacModel.Store.CONTRATACAO_FERIAS_SENDS_PENDENTES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_STATUS" EntityType="SysSenacModel.Store.CONTRATACAO_STATUS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_SUBSTITUTO" EntityType="SysSenacModel.Store.CONTRATACAO_SUBSTITUTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_SUBSTITUTO_ARQUIVO" EntityType="SysSenacModel.Store.CONTRATACAO_SUBSTITUTO_ARQUIVO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTRATACAO_USUARIO" EntityType="SysSenacModel.Store.CONTRATACAO_USUARIO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_AFASTADO" EntityType="SysSenacModel.Store.GC_AFASTADO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_DEMISSAO_NOVO" EntityType="SysSenacModel.Store.GC_DEMISSAO_NOVO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_DIRETORIO" EntityType="SysSenacModel.Store.GC_DIRETORIO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_FERIAS" EntityType="SysSenacModel.Store.GC_FERIAS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_FERIAS_SENDS_PENDENTES" EntityType="SysSenacModel.Store.GC_FERIAS_SENDS_PENDENTES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_SITUACAO" EntityType="SysSenacModel.Store.GC_SITUACAO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GC_USUARIOS" EntityType="SysSenacModel.Store.GC_USUARIOS" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CONTRATACAO_ARQUIVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar(max)" Nullable="false" />
+          <Property Name="extensao" Type="varchar(max)" Nullable="false" />
+          <Property Name="tipo" Type="varchar(max)" Nullable="false" />
+          <Property Name="tamanho" Type="bigint" Nullable="false" />
+          <Property Name="binario" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_AUDITORIA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dado_original" Type="varchar(max)" Nullable="false" />
+          <Property Name="dado_alterado" Type="varchar(max)" Nullable="false" />
+          <Property Name="tipo" Type="varchar(max)" Nullable="false" />
+          <Property Name="tabela" Type="varchar(max)" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_COLABORADOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_pessoa" Type="int" Nullable="false" />
+          <Property Name="chapa" Type="varchar(max)" Nullable="false" />
+          <Property Name="matricula" Type="int" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" Nullable="false" />
+          <Property Name="sexo" Type="char" MaxLength="1" />
+          <Property Name="data_nascimento" Type="datetime" />
+          <Property Name="email_corporativo" Type="varchar(max)" />
+          <Property Name="email_pessoal1" Type="varchar(max)" />
+          <Property Name="email_pessoal2" Type="varchar(max)" />
+          <Property Name="codigo_recebimento" Type="varchar(max)" />
+          <Property Name="codigo_situacao" Type="char" MaxLength="1" />
+          <Property Name="situacao" Type="varchar(max)" />
+          <Property Name="codigo_tipo" Type="char" MaxLength="1" />
+          <Property Name="centro_de_custo" Type="varchar(max)" />
+          <Property Name="codigo_unidade_sei" Type="varchar(max)" />
+          <Property Name="codigo_unidade" Type="smallint" />
+          <Property Name="unidade" Type="varchar(max)" />
+          <Property Name="codigo_secao" Type="varchar(max)" />
+          <Property Name="secao" Type="varchar(max)" />
+          <Property Name="codigo_cargo" Type="varchar(max)" />
+          <Property Name="cargo" Type="varchar(max)" />
+          <Property Name="codigo_funcao" Type="varchar(max)" />
+          <Property Name="funcao" Type="varchar(max)" />
+          <Property Name="data_admissao" Type="datetime" />
+          <Property Name="tipo_admissao" Type="char" MaxLength="1" />
+          <Property Name="data_demissao" Type="datetime" />
+          <Property Name="tipo_demissao" Type="char" MaxLength="1" />
+          <Property Name="data_inicio_ferias" Type="datetime" />
+          <Property Name="data_fim_ferias" Type="datetime" />
+          <Property Name="data_inicio_afastamento" Type="datetime" />
+          <Property Name="data_fim_afastamento" Type="datetime" />
+          <Property Name="gestor_chapa" Type="varchar(max)" />
+          <Property Name="gestor_nome" Type="varchar(max)" />
+          <Property Name="gestor_email" Type="varchar(max)" />
+          <Property Name="telefone1" Type="varchar(max)" />
+          <Property Name="telefone2" Type="varchar(max)" />
+          <Property Name="telefone3" Type="varchar(max)" />
+          <Property Name="pais" Type="varchar(max)" />
+          <Property Name="estado" Type="varchar(max)" />
+          <Property Name="cidade" Type="varchar(max)" />
+          <Property Name="rua" Type="varchar(max)" />
+          <Property Name="numero" Type="varchar(max)" />
+          <Property Name="complemento" Type="varchar(max)" />
+          <Property Name="bairro" Type="varchar(max)" />
+          <Property Name="cep" Type="varchar(max)" />
+          <Property Name="criado_por" Type="varchar(max)" />
+          <Property Name="criado_em" Type="datetime" />
+          <Property Name="modificado_por" Type="varchar(max)" />
+          <Property Name="modificado_em" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_DIRETORIOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="secao_codigo" Type="varchar(max)" Nullable="false" />
+          <Property Name="secao" Type="varchar(max)" Nullable="false" />
+          <Property Name="centro_de_custo" Type="varchar(max)" Nullable="false" />
+          <Property Name="diretorio_nome" Type="varchar(max)" Nullable="false" />
+          <Property Name="diretorio" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_FERIAS_SENDS_PENDENTES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="bigint" Nullable="false" />
+          <Property Name="data_inicio_ferias" Type="datetime" />
+          <Property Name="quantidade_sends_pendentes" Type="bigint" />
+          <Property Name="quantidade_emails_enviados" Type="bigint" />
+          <Property Name="data_ultimo_email_enviado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_STATUS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_SUBSTITUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id_titular" Type="bigint" Nullable="false" />
+          <Property Name="usuario_id_suplente" Type="bigint" Nullable="false" />
+          <Property Name="data_inicio_substituicao" Type="datetime" Nullable="false" />
+          <Property Name="data_fim_substituicao" Type="datetime" Nullable="false" />
+          <Property Name="motivo_observacoes" Type="varchar(max)" Nullable="false" />
+          <Property Name="status" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_SUBSTITUTO_ARQUIVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="substituto_id" Type="bigint" Nullable="false" />
+          <Property Name="arquivo_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="colaborador_id" Type="bigint" Nullable="false" />
+          <Property Name="usuario_conta" Type="varchar(max)" Nullable="false" />
+          <Property Name="status_id_conta" Type="bigint" Nullable="false" />
+          <Property Name="data_ativacao_conta" Type="datetime" Nullable="false" />
+          <Property Name="data_desativacao_conta" Type="datetime" />
+          <Property Name="usuario_active_directory" Type="varchar(max)" />
+          <Property Name="status_id_active_directory" Type="bigint" Nullable="false" />
+          <Property Name="usuario_exchange" Type="varchar(max)" />
+          <Property Name="status_id_exchange" Type="bigint" Nullable="false" />
+          <Property Name="usuario_sei" Type="varchar(max)" />
+          <Property Name="status_id_sei" Type="bigint" Nullable="false" />
+          <Property Name="usuario_send" Type="bigint" />
+          <Property Name="status_id_send" Type="bigint" Nullable="false" />
+          <Property Name="motivo_observacoes" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GC_AFASTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="varchar(max)" />
+          <Property Name="matricula" Type="bigint" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" />
+          <Property Name="data_inicio" Type="datetime" />
+          <Property Name="data_fim" Type="datetime" />
+          <Property Name="active_directory_path" Type="varchar(max)" />
+          <Property Name="ultima_movimentacao" Type="datetime" />
+          <Property Name="usuario_logado" Type="varchar(max)" />
+          <Property Name="situacao" Type="bigint" />
+          <Property Name="status_active_directory" Type="varchar(max)" />
+          <Property Name="status_exchange" Type="varchar(max)" />
+          <Property Name="status_sei" Type="varchar(max)" />
+          <Property Name="status_send" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GC_DEMISSAO_NOVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="varchar(max)" />
+          <Property Name="matricula" Type="bigint" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" />
+          <Property Name="data_inicio" Type="datetime" />
+          <Property Name="data_fim" Type="datetime" />
+          <Property Name="active_directory_path" Type="varchar(max)" />
+          <Property Name="ultima_movimentacao" Type="datetime" />
+          <Property Name="usuario_logado" Type="varchar(max)" />
+          <Property Name="situacao" Type="bigint" />
+          <Property Name="status_active_directory" Type="varchar(max)" />
+          <Property Name="status_exchange" Type="varchar(max)" />
+          <Property Name="status_sei" Type="varchar(max)" />
+          <Property Name="status_send" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GC_DIRETORIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="secao_codigo" Type="varchar(max)" />
+          <Property Name="secao_nome" Type="varchar(max)" />
+          <Property Name="centro_de_custo" Type="varchar(max)" />
+          <Property Name="diretorio_nome" Type="varchar(max)" />
+          <Property Name="diretorio" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GC_FERIAS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="varchar(max)" />
+          <Property Name="matricula" Type="bigint" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" />
+          <Property Name="data_inicio" Type="datetime" />
+          <Property Name="data_fim" Type="datetime" />
+          <Property Name="active_directory_path" Type="varchar(max)" />
+          <Property Name="ultima_movimentacao" Type="datetime" />
+          <Property Name="usuario_logado" Type="varchar(max)" />
+          <Property Name="situacao" Type="bigint" />
+          <Property Name="status_active_directory" Type="varchar(max)" />
+          <Property Name="status_exchange" Type="varchar(max)" />
+          <Property Name="status_sei" Type="varchar(max)" />
+          <Property Name="status_send" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GC_FERIAS_SENDS_PENDENTES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="varchar(max)" />
+          <Property Name="matricula" Type="bigint" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" />
+          <Property Name="data_inicio_ferias" Type="datetime" />
+          <Property Name="data_ultimo_email_enviado" Type="datetime" />
+          <Property Name="quantidade_sends_pendentes" Type="bigint" />
+          <Property Name="quantidade_emails_enviados" Type="bigint" />
+        </EntityType>
+        <EntityType Name="GC_SITUACAO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GC_USUARIOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="varchar(max)" />
+          <Property Name="matricula" Type="bigint" />
+          <Property Name="nome" Type="varchar(max)" />
+          <Property Name="cpf" Type="varchar(max)" />
+          <Property Name="sexo" Type="char" MaxLength="1" />
+          <Property Name="data_nascimento" Type="datetime" />
+          <Property Name="email_pessoal" Type="varchar(max)" />
+          <Property Name="email_corporativo" Type="varchar(max)" />
+          <Property Name="situacao" Type="char" MaxLength="1" />
+          <Property Name="tipo" Type="char" MaxLength="1" />
+          <Property Name="centro_de_custo" Type="varchar(max)" />
+          <Property Name="unidade_codigo" Type="varchar(max)" />
+          <Property Name="unidade" Type="varchar(max)" />
+          <Property Name="secao_codigo" Type="varchar(max)" />
+          <Property Name="secao" Type="varchar(max)" />
+          <Property Name="funcao_codigo" Type="varchar(max)" />
+          <Property Name="funcao" Type="varchar(max)" />
+          <Property Name="data_admissao" Type="datetime" />
+          <Property Name="data_demissao" Type="datetime" />
+          <Property Name="gestor_chapa" Type="varchar(max)" />
+          <Property Name="gestor_nome" Type="varchar(max)" />
+          <Property Name="gestor_email" Type="varchar(max)" />
+          <Property Name="telefone1" Type="varchar(max)" />
+          <Property Name="telefone2" Type="varchar(max)" />
+          <Property Name="telefone3" Type="varchar(max)" />
+          <Property Name="pais" Type="varchar(max)" />
+          <Property Name="estado" Type="varchar(max)" />
+          <Property Name="cidade" Type="varchar(max)" />
+          <Property Name="rua" Type="varchar(max)" />
+          <Property Name="numero" Type="bigint" />
+          <Property Name="complemento" Type="varchar(max)" />
+          <Property Name="bairro" Type="varchar(max)" />
+          <Property Name="cep" Type="varchar(max)" />
+          <Property Name="usuario" Type="varchar(max)" />
+          <Property Name="ad_usuario" Type="varchar(max)" />
+          <Property Name="exchange_usuario" Type="varchar(max)" />
+          <Property Name="sei_usu_id" Type="varchar(max)" />
+          <Property Name="send_cod_usuario" Type="bigint" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SysSenacModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GC_AFASTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int64" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_inicio" Type="DateTime" Precision="3" />
+          <Property Name="data_fim" Type="DateTime" Precision="3" />
+          <Property Name="active_directory_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ultima_movimentacao" Type="DateTime" Precision="3" />
+          <Property Name="usuario_logado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="Int64" />
+          <Property Name="status_active_directory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_exchange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_sei" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_send" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GC_DEMISSAO_NOVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int64" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_inicio" Type="DateTime" Precision="3" />
+          <Property Name="data_fim" Type="DateTime" Precision="3" />
+          <Property Name="active_directory_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ultima_movimentacao" Type="DateTime" Precision="3" />
+          <Property Name="usuario_logado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="Int64" />
+          <Property Name="status_active_directory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_exchange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_sei" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_send" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GC_DIRETORIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="secao_codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secao_nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="centro_de_custo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="diretorio_nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="diretorio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GC_FERIAS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int64" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_inicio" Type="DateTime" Precision="3" />
+          <Property Name="data_fim" Type="DateTime" Precision="3" />
+          <Property Name="active_directory_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ultima_movimentacao" Type="DateTime" Precision="3" />
+          <Property Name="usuario_logado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="Int64" />
+          <Property Name="status_active_directory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_exchange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_sei" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_send" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GC_FERIAS_SENDS_PENDENTES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int64" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_inicio_ferias" Type="DateTime" Precision="3" />
+          <Property Name="data_ultimo_email_enviado" Type="DateTime" Precision="3" />
+          <Property Name="quantidade_sends_pendentes" Type="Int64" />
+          <Property Name="quantidade_emails_enviados" Type="Int64" />
+        </EntityType>
+        <EntityType Name="GC_SITUACAO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GC_USUARIOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int64" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="data_nascimento" Type="DateTime" Precision="3" />
+          <Property Name="email_pessoal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email_corporativo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="centro_de_custo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="unidade_codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="unidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secao_codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="funcao_codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="funcao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_admissao" Type="DateTime" Precision="3" />
+          <Property Name="data_demissao" Type="DateTime" Precision="3" />
+          <Property Name="gestor_chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gestor_nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gestor_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rua" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="Int64" />
+          <Property Name="complemento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ad_usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="exchange_usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sei_usu_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="send_cod_usuario" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="ConexaoSql" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GC_AFASTADO" EntityType="Self.GC_AFASTADO" />
+          <EntitySet Name="GC_DEMISSAO_NOVO" EntityType="Self.GC_DEMISSAO_NOVO" />
+          <EntitySet Name="GC_DIRETORIO" EntityType="Self.GC_DIRETORIO" />
+          <EntitySet Name="GC_FERIAS" EntityType="Self.GC_FERIAS" />
+          <EntitySet Name="GC_FERIAS_SENDS_PENDENTES" EntityType="Self.GC_FERIAS_SENDS_PENDENTES" />
+          <EntitySet Name="GC_SITUACAO" EntityType="Self.GC_SITUACAO" />
+          <EntitySet Name="GC_USUARIOS" EntityType="Self.GC_USUARIOS" />
+          <EntitySet Name="CONTRATACAO_AUDITORIA" EntityType="SysSenacModel.CONTRATACAO_AUDITORIA" />
+          <EntitySet Name="CONTRATACAO_COLABORADOR" EntityType="SysSenacModel.CONTRATACAO_COLABORADOR" />
+          <EntitySet Name="CONTRATACAO_DIRETORIOS" EntityType="SysSenacModel.CONTRATACAO_DIRETORIOS" />
+          <EntitySet Name="CONTRATACAO_FERIAS_SENDS_PENDENTES" EntityType="SysSenacModel.CONTRATACAO_FERIAS_SENDS_PENDENTES" />
+          <EntitySet Name="CONTRATACAO_STATUS" EntityType="SysSenacModel.CONTRATACAO_STATUS" />
+          <EntitySet Name="CONTRATACAO_SUBSTITUTO_ARQUIVO" EntityType="SysSenacModel.CONTRATACAO_SUBSTITUTO_ARQUIVO" />
+          <EntitySet Name="CONTRATACAO_USUARIO" EntityType="SysSenacModel.CONTRATACAO_USUARIO" />
+          <EntitySet Name="CONTRATACAO_ARQUIVO" EntityType="SysSenacModel.CONTRATACAO_ARQUIVO" />
+          <EntitySet Name="CONTRATACAO_SUBSTITUTO" EntityType="SysSenacModel.CONTRATACAO_SUBSTITUTO" />
+          </EntityContainer>
+        <EntityType Name="CONTRATACAO_AUDITORIA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dado_original" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dado_alterado" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tabela" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_COLABORADOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_pessoa" Type="Int32" Nullable="false" />
+          <Property Name="chapa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="Int32" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="data_nascimento" Type="DateTime" Precision="3" />
+          <Property Name="email_corporativo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email_pessoal1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email_pessoal2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_recebimento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_situacao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="centro_de_custo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_unidade_sei" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_unidade" Type="Int16" />
+          <Property Name="unidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_secao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_funcao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="funcao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_admissao" Type="DateTime" Precision="3" />
+          <Property Name="tipo_admissao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="data_demissao" Type="DateTime" Precision="3" />
+          <Property Name="tipo_demissao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="data_inicio_ferias" Type="DateTime" Precision="3" />
+          <Property Name="data_fim_ferias" Type="DateTime" Precision="3" />
+          <Property Name="data_inicio_afastamento" Type="DateTime" Precision="3" />
+          <Property Name="data_fim_afastamento" Type="DateTime" Precision="3" />
+          <Property Name="gestor_chapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gestor_nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gestor_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefone3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rua" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="criado_por" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="criado_em" Type="DateTime" Precision="3" />
+          <Property Name="modificado_por" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="modificado_em" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_DIRETORIOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="secao_codigo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="centro_de_custo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="diretorio_nome" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="diretorio" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_FERIAS_SENDS_PENDENTES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Name="data_inicio_ferias" Type="DateTime" Precision="3" />
+          <Property Name="quantidade_sends_pendentes" Type="Int64" />
+          <Property Name="quantidade_emails_enviados" Type="Int64" />
+          <Property Name="data_ultimo_email_enviado" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_STATUS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_SUBSTITUTO_ARQUIVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="substituto_id" Type="Int64" Nullable="false" />
+          <Property Name="arquivo_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="colaborador_id" Type="Int64" Nullable="false" />
+          <Property Name="usuario_conta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_id_conta" Type="Int64" Nullable="false" />
+          <Property Name="data_ativacao_conta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_desativacao_conta" Type="DateTime" Precision="3" />
+          <Property Name="usuario_active_directory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_id_active_directory" Type="Int64" Nullable="false" />
+          <Property Name="usuario_exchange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_id_exchange" Type="Int64" Nullable="false" />
+          <Property Name="usuario_sei" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_id_sei" Type="Int64" Nullable="false" />
+          <Property Name="usuario_send" Type="Int64" />
+          <Property Name="status_id_send" Type="Int64" Nullable="false" />
+          <Property Name="motivo_observacoes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_ARQUIVO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="extensao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tamanho" Type="Int64" Nullable="false" />
+          <Property Name="binario" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CONTRATACAO_SUBSTITUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id_titular" Type="Int64" Nullable="false" />
+          <Property Name="usuario_id_suplente" Type="Int64" Nullable="false" />
+          <Property Name="data_inicio_substituicao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_fim_substituicao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="motivo_observacoes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int64" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SysSenacModelStoreContainer" CdmEntityContainer="ConexaoSql">
+          <EntitySetMapping Name="GC_AFASTADO">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_AFASTADO">
+              <MappingFragment StoreEntitySet="GC_AFASTADO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="active_directory_path" ColumnName="active_directory_path" />
+                <ScalarProperty Name="ultima_movimentacao" ColumnName="ultima_movimentacao" />
+                <ScalarProperty Name="usuario_logado" ColumnName="usuario_logado" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="status_active_directory" ColumnName="status_active_directory" />
+                <ScalarProperty Name="status_exchange" ColumnName="status_exchange" />
+                <ScalarProperty Name="status_sei" ColumnName="status_sei" />
+                <ScalarProperty Name="status_send" ColumnName="status_send" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_DEMISSAO_NOVO">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_DEMISSAO_NOVO">
+              <MappingFragment StoreEntitySet="GC_DEMISSAO_NOVO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="active_directory_path" ColumnName="active_directory_path" />
+                <ScalarProperty Name="ultima_movimentacao" ColumnName="ultima_movimentacao" />
+                <ScalarProperty Name="usuario_logado" ColumnName="usuario_logado" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="status_active_directory" ColumnName="status_active_directory" />
+                <ScalarProperty Name="status_exchange" ColumnName="status_exchange" />
+                <ScalarProperty Name="status_sei" ColumnName="status_sei" />
+                <ScalarProperty Name="status_send" ColumnName="status_send" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_DIRETORIO">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_DIRETORIO">
+              <MappingFragment StoreEntitySet="GC_DIRETORIO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="secao_codigo" ColumnName="secao_codigo" />
+                <ScalarProperty Name="secao_nome" ColumnName="secao_nome" />
+                <ScalarProperty Name="centro_de_custo" ColumnName="centro_de_custo" />
+                <ScalarProperty Name="diretorio_nome" ColumnName="diretorio_nome" />
+                <ScalarProperty Name="diretorio" ColumnName="diretorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_FERIAS">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_FERIAS">
+              <MappingFragment StoreEntitySet="GC_FERIAS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="active_directory_path" ColumnName="active_directory_path" />
+                <ScalarProperty Name="ultima_movimentacao" ColumnName="ultima_movimentacao" />
+                <ScalarProperty Name="usuario_logado" ColumnName="usuario_logado" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="status_active_directory" ColumnName="status_active_directory" />
+                <ScalarProperty Name="status_exchange" ColumnName="status_exchange" />
+                <ScalarProperty Name="status_sei" ColumnName="status_sei" />
+                <ScalarProperty Name="status_send" ColumnName="status_send" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_FERIAS_SENDS_PENDENTES">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_FERIAS_SENDS_PENDENTES">
+              <MappingFragment StoreEntitySet="GC_FERIAS_SENDS_PENDENTES">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="data_inicio_ferias" ColumnName="data_inicio_ferias" />
+                <ScalarProperty Name="data_ultimo_email_enviado" ColumnName="data_ultimo_email_enviado" />
+                <ScalarProperty Name="quantidade_sends_pendentes" ColumnName="quantidade_sends_pendentes" />
+                <ScalarProperty Name="quantidade_emails_enviados" ColumnName="quantidade_emails_enviados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_SITUACAO">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_SITUACAO">
+              <MappingFragment StoreEntitySet="GC_SITUACAO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GC_USUARIOS">
+            <EntityTypeMapping TypeName="SysSenacModel.GC_USUARIOS">
+              <MappingFragment StoreEntitySet="GC_USUARIOS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+                <ScalarProperty Name="email_pessoal" ColumnName="email_pessoal" />
+                <ScalarProperty Name="email_corporativo" ColumnName="email_corporativo" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="centro_de_custo" ColumnName="centro_de_custo" />
+                <ScalarProperty Name="unidade_codigo" ColumnName="unidade_codigo" />
+                <ScalarProperty Name="unidade" ColumnName="unidade" />
+                <ScalarProperty Name="secao_codigo" ColumnName="secao_codigo" />
+                <ScalarProperty Name="secao" ColumnName="secao" />
+                <ScalarProperty Name="funcao_codigo" ColumnName="funcao_codigo" />
+                <ScalarProperty Name="funcao" ColumnName="funcao" />
+                <ScalarProperty Name="data_admissao" ColumnName="data_admissao" />
+                <ScalarProperty Name="data_demissao" ColumnName="data_demissao" />
+                <ScalarProperty Name="gestor_chapa" ColumnName="gestor_chapa" />
+                <ScalarProperty Name="gestor_nome" ColumnName="gestor_nome" />
+                <ScalarProperty Name="gestor_email" ColumnName="gestor_email" />
+                <ScalarProperty Name="telefone1" ColumnName="telefone1" />
+                <ScalarProperty Name="telefone2" ColumnName="telefone2" />
+                <ScalarProperty Name="telefone3" ColumnName="telefone3" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="ad_usuario" ColumnName="ad_usuario" />
+                <ScalarProperty Name="exchange_usuario" ColumnName="exchange_usuario" />
+                <ScalarProperty Name="sei_usu_id" ColumnName="sei_usu_id" />
+                <ScalarProperty Name="send_cod_usuario" ColumnName="send_cod_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_AUDITORIA">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_AUDITORIA">
+              <MappingFragment StoreEntitySet="CONTRATACAO_AUDITORIA">
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="tabela" ColumnName="tabela" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="dado_alterado" ColumnName="dado_alterado" />
+                <ScalarProperty Name="dado_original" ColumnName="dado_original" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_COLABORADOR">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_COLABORADOR">
+              <MappingFragment StoreEntitySet="CONTRATACAO_COLABORADOR">
+                <ScalarProperty Name="modificado_em" ColumnName="modificado_em" />
+                <ScalarProperty Name="modificado_por" ColumnName="modificado_por" />
+                <ScalarProperty Name="criado_em" ColumnName="criado_em" />
+                <ScalarProperty Name="criado_por" ColumnName="criado_por" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="telefone3" ColumnName="telefone3" />
+                <ScalarProperty Name="telefone2" ColumnName="telefone2" />
+                <ScalarProperty Name="telefone1" ColumnName="telefone1" />
+                <ScalarProperty Name="gestor_email" ColumnName="gestor_email" />
+                <ScalarProperty Name="gestor_nome" ColumnName="gestor_nome" />
+                <ScalarProperty Name="gestor_chapa" ColumnName="gestor_chapa" />
+                <ScalarProperty Name="data_fim_afastamento" ColumnName="data_fim_afastamento" />
+                <ScalarProperty Name="data_inicio_afastamento" ColumnName="data_inicio_afastamento" />
+                <ScalarProperty Name="data_fim_ferias" ColumnName="data_fim_ferias" />
+                <ScalarProperty Name="data_inicio_ferias" ColumnName="data_inicio_ferias" />
+                <ScalarProperty Name="tipo_demissao" ColumnName="tipo_demissao" />
+                <ScalarProperty Name="data_demissao" ColumnName="data_demissao" />
+                <ScalarProperty Name="tipo_admissao" ColumnName="tipo_admissao" />
+                <ScalarProperty Name="data_admissao" ColumnName="data_admissao" />
+                <ScalarProperty Name="funcao" ColumnName="funcao" />
+                <ScalarProperty Name="codigo_funcao" ColumnName="codigo_funcao" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="codigo_cargo" ColumnName="codigo_cargo" />
+                <ScalarProperty Name="secao" ColumnName="secao" />
+                <ScalarProperty Name="codigo_secao" ColumnName="codigo_secao" />
+                <ScalarProperty Name="unidade" ColumnName="unidade" />
+                <ScalarProperty Name="codigo_unidade" ColumnName="codigo_unidade" />
+                <ScalarProperty Name="codigo_unidade_sei" ColumnName="codigo_unidade_sei" />
+                <ScalarProperty Name="centro_de_custo" ColumnName="centro_de_custo" />
+                <ScalarProperty Name="codigo_tipo" ColumnName="codigo_tipo" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="codigo_situacao" ColumnName="codigo_situacao" />
+                <ScalarProperty Name="codigo_recebimento" ColumnName="codigo_recebimento" />
+                <ScalarProperty Name="email_pessoal2" ColumnName="email_pessoal2" />
+                <ScalarProperty Name="email_pessoal1" ColumnName="email_pessoal1" />
+                <ScalarProperty Name="email_corporativo" ColumnName="email_corporativo" />
+                <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="chapa" ColumnName="chapa" />
+                <ScalarProperty Name="codigo_pessoa" ColumnName="codigo_pessoa" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_DIRETORIOS">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_DIRETORIOS">
+              <MappingFragment StoreEntitySet="CONTRATACAO_DIRETORIOS">
+                <ScalarProperty Name="diretorio" ColumnName="diretorio" />
+                <ScalarProperty Name="diretorio_nome" ColumnName="diretorio_nome" />
+                <ScalarProperty Name="centro_de_custo" ColumnName="centro_de_custo" />
+                <ScalarProperty Name="secao" ColumnName="secao" />
+                <ScalarProperty Name="secao_codigo" ColumnName="secao_codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_FERIAS_SENDS_PENDENTES">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_FERIAS_SENDS_PENDENTES">
+              <MappingFragment StoreEntitySet="CONTRATACAO_FERIAS_SENDS_PENDENTES">
+                <ScalarProperty Name="data_ultimo_email_enviado" ColumnName="data_ultimo_email_enviado" />
+                <ScalarProperty Name="quantidade_emails_enviados" ColumnName="quantidade_emails_enviados" />
+                <ScalarProperty Name="quantidade_sends_pendentes" ColumnName="quantidade_sends_pendentes" />
+                <ScalarProperty Name="data_inicio_ferias" ColumnName="data_inicio_ferias" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_STATUS">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_STATUS">
+              <MappingFragment StoreEntitySet="CONTRATACAO_STATUS">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_SUBSTITUTO_ARQUIVO">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_SUBSTITUTO_ARQUIVO">
+              <MappingFragment StoreEntitySet="CONTRATACAO_SUBSTITUTO_ARQUIVO">
+                <ScalarProperty Name="arquivo_id" ColumnName="arquivo_id" />
+                <ScalarProperty Name="substituto_id" ColumnName="substituto_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_USUARIO">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_USUARIO">
+              <MappingFragment StoreEntitySet="CONTRATACAO_USUARIO">
+                <ScalarProperty Name="motivo_observacoes" ColumnName="motivo_observacoes" />
+                <ScalarProperty Name="status_id_send" ColumnName="status_id_send" />
+                <ScalarProperty Name="usuario_send" ColumnName="usuario_send" />
+                <ScalarProperty Name="status_id_sei" ColumnName="status_id_sei" />
+                <ScalarProperty Name="usuario_sei" ColumnName="usuario_sei" />
+                <ScalarProperty Name="status_id_exchange" ColumnName="status_id_exchange" />
+                <ScalarProperty Name="usuario_exchange" ColumnName="usuario_exchange" />
+                <ScalarProperty Name="status_id_active_directory" ColumnName="status_id_active_directory" />
+                <ScalarProperty Name="usuario_active_directory" ColumnName="usuario_active_directory" />
+                <ScalarProperty Name="data_desativacao_conta" ColumnName="data_desativacao_conta" />
+                <ScalarProperty Name="data_ativacao_conta" ColumnName="data_ativacao_conta" />
+                <ScalarProperty Name="status_id_conta" ColumnName="status_id_conta" />
+                <ScalarProperty Name="usuario_conta" ColumnName="usuario_conta" />
+                <ScalarProperty Name="colaborador_id" ColumnName="colaborador_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_ARQUIVO">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_ARQUIVO">
+              <MappingFragment StoreEntitySet="CONTRATACAO_ARQUIVO">
+                <ScalarProperty Name="binario" ColumnName="binario" />
+                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="extensao" ColumnName="extensao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATACAO_SUBSTITUTO">
+            <EntityTypeMapping TypeName="SysSenacModel.CONTRATACAO_SUBSTITUTO">
+              <MappingFragment StoreEntitySet="CONTRATACAO_SUBSTITUTO">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="motivo_observacoes" ColumnName="motivo_observacoes" />
+                <ScalarProperty Name="data_fim_substituicao" ColumnName="data_fim_substituicao" />
+                <ScalarProperty Name="data_inicio_substituicao" ColumnName="data_inicio_substituicao" />
+                <ScalarProperty Name="usuario_id_suplente" ColumnName="usuario_id_suplente" />
+                <ScalarProperty Name="usuario_id_titular" ColumnName="usuario_id_titular" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

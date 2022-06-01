@@ -1,0 +1,58 @@
+﻿html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #004171 !important;
+}
+
+.inner {
+    max-width: 600px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    margin: auto;
+    padding: 25px;
+    -moz-box-shadow: 0px 0px 50px 1px #fff;
+    -webkit-box-shadow: 0px 0px 50px 1px #fff;
+    box-shadow: 0px 0px 50px 1px #fff;
+}
+
+    .inner .form-header {
+        color: #fff;
+        font-size: 22pt;
+        font-weight: bolder;
+        text-align: right;
+        /*background-image: url(images/logo2.png);*/
+        background-position: 5% 0%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        text-shadow: 2px 2px 2px #000000;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .inner .submit {
+        width: 150px;
+    }
+
+    .inner .validation {
+        color: yellow;
+        text-align: center;
+    }
+
+@media (max-width: 768px) {
+    .inner {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}

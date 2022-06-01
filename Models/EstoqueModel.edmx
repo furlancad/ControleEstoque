@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EstoqueModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EstoqueModelStoreContainer">
+          <EntitySet Name="CURSOS" EntityType="EstoqueModel.Store.CURSOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEPOSITO" EntityType="EstoqueModel.Store.DEPOSITO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DISCIPLINA" EntityType="EstoqueModel.Store.DISCIPLINA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DISCIPLINA_INSTRUTOR" EntityType="EstoqueModel.Store.DISCIPLINA_INSTRUTOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTRADA" EntityType="EstoqueModel.Store.ENTRADA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTRADA_AUXILIAR" EntityType="EstoqueModel.Store.ENTRADA_AUXILIAR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="INSTRUTOR" EntityType="EstoqueModel.Store.INSTRUTOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ITENS_ENTRADA" EntityType="EstoqueModel.Store.ITENS_ENTRADA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LISTA_BASICA" EntityType="EstoqueModel.Store.LISTA_BASICA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PLANEJAMENTO" EntityType="EstoqueModel.Store.PLANEJAMENTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PLANEJAMENTO_AUXILIAR" EntityType="EstoqueModel.Store.PLANEJAMENTO_AUXILIAR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PLANEJAMENTO_ITENS_EXTRA" EntityType="EstoqueModel.Store.PLANEJAMENTO_ITENS_EXTRA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRODUTO" EntityType="EstoqueModel.Store.PRODUTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SAIDA" EntityType="EstoqueModel.Store.SAIDA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SAIDA_AUXILIAR" EntityType="EstoqueModel.Store.SAIDA_AUXILIAR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="EstoqueModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TURMA" EntityType="EstoqueModel.Store.TURMA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UNIDADE" EntityType="EstoqueModel.Store.UNIDADE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIO" EntityType="EstoqueModel.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ITENS_ENTRADA_ENTRADA" Association="EstoqueModel.Store.FK_ITENS_ENTRADA_ENTRADA">
+            <End Role="ENTRADA" EntitySet="ENTRADA" />
+            <End Role="ITENS_ENTRADA" EntitySet="ITENS_ENTRADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITENS_ENTRADA_PRODUTO" Association="EstoqueModel.Store.FK_ITENS_ENTRADA_PRODUTO">
+            <End Role="PRODUTO" EntitySet="PRODUTO" />
+            <End Role="ITENS_ENTRADA" EntitySet="ITENS_ENTRADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO" Association="EstoqueModel.Store.FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO">
+            <End Role="PLANEJAMENTO" EntitySet="PLANEJAMENTO" />
+            <End Role="PLANEJAMENTO_ITENS_EXTRA" EntitySet="PLANEJAMENTO_ITENS_EXTRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLANEJAMENTO_LISTA_BASICA" Association="EstoqueModel.Store.FK_PLANEJAMENTO_LISTA_BASICA">
+            <End Role="LISTA_BASICA" EntitySet="LISTA_BASICA" />
+            <End Role="PLANEJAMENTO" EntitySet="PLANEJAMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_DEPOSITO" Association="EstoqueModel.Store.FK_USUARIO_DEPOSITO">
+            <End Role="DEPOSITO" EntitySet="DEPOSITO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="curso" Type="varchar(max)" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPOSITO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="deposito" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idDisciplina" Type="int" Nullable="false" />
+          <Property Name="disciplina" Type="varchar(max)" Nullable="false" />
+          <Property Name="dataInicial" Type="datetime" Nullable="false" />
+          <Property Name="dataFinal" Type="datetime" Nullable="false" />
+          <Property Name="horaInicial" Type="varchar(max)" Nullable="false" />
+          <Property Name="horaFinal" Type="varchar(max)" Nullable="false" />
+          <Property Name="cargaHoraria" Type="int" Nullable="false" />
+          <Property Name="supervisor" Type="varchar(max)" />
+          <Property Name="cpfSupervisor" Type="varchar(max)" />
+          <Property Name="freqSemanal" Type="varchar(max)" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA_INSTRUTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idDisciplina" Type="int" Nullable="false" />
+          <Property Name="idInstrutor" Type="bigint" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENTRADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dataEntrada" Type="datetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar(max)" Nullable="false" />
+          <Property Name="observacao" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ENTRADA_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="idDeposito" Type="int" Nullable="false" />
+          <Property Name="dataVencimento" Type="datetime" />
+          <Property Name="quantEntrada" Type="int" />
+          <Property Name="localizacao" Type="varchar(max)" />
+          <Property Name="observacao" Type="varchar(max)" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSTRUTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idInstrutor" Type="bigint" Nullable="false" />
+          <Property Name="instrutor" Type="varchar(max)" Nullable="false" />
+          <Property Name="cpf" Type="varchar(max)" Nullable="false" />
+          <Property Name="idUnidade" Type="int" />
+        </EntityType>
+        <EntityType Name="ITENS_ENTRADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="quantEntrada" Type="int" />
+          <Property Name="localizacao" Type="varchar(max)" />
+          <Property Name="valorUnitario" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="dataVencimento" Type="datetime" />
+          <Property Name="idEntrada" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="idDeposito" Type="int" Nullable="false" />
+          <Property Name="idProduto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LISTA_BASICA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idGrade" Type="int" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="unidMedida" Type="varchar(max)" Nullable="false" />
+          <Property Name="quantEstimada" Type="int" />
+          <Property Name="observacao" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="codTurma" Type="varchar(max)" Nullable="false" />
+          <Property Name="idDisciplina" Type="int" />
+          <Property Name="aula" Type="varchar(max)" Nullable="false" />
+          <Property Name="idListaBasica" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="idInstrutor" Type="bigint" />
+          <Property Name="saldo" Type="int" Nullable="false" />
+          <Property Name="dataPlanejamento" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idPlanejamento" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="idInstrutor" Type="bigint" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="justificativa" Type="varchar(max)" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="aula" Type="varchar(max)" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO_ITENS_EXTRA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idPlanejamento" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="idInstrutor" Type="bigint" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="quantidade" Type="int" />
+          <Property Name="justificativa" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codBarra" Type="varchar(max)" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="produto" Type="varchar(max)" Nullable="false" />
+          <Property Name="unidMedida" Type="varchar(max)" Nullable="false" />
+          <Property Name="valorUnitario" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="SAIDA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dataSaida" Type="datetime" Nullable="false" />
+          <Property Name="despesaRealizada" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="quantidadeRetorno" Type="int" Nullable="false" />
+          <Property Name="valorRetorno" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="aula" Type="varchar(max)" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAIDA_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codSei" Type="int" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="aula" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TURMA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idTurma" Type="int" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="codTurma" Type="varchar(max)" Nullable="false" />
+          <Property Name="codOrcamentario" Type="varchar(max)" Nullable="false" />
+          <Property Name="turma" Type="varchar(max)" Nullable="false" />
+          <Property Name="situacao" Type="varchar(max)" Nullable="false" />
+          <Property Name="dataInicial" Type="datetime" Nullable="false" />
+          <Property Name="dataFinal" Type="datetime" Nullable="false" />
+          <Property Name="horaInicial" Type="varchar(max)" Nullable="false" />
+          <Property Name="horaFinal" Type="varchar(max)" Nullable="false" />
+          <Property Name="turno" Type="varchar(max)" Nullable="false" />
+          <Property Name="cargaHoraria" Type="int" Nullable="false" />
+          <Property Name="vagas" Type="int" Nullable="false" />
+          <Property Name="numAlunos" Type="int" Nullable="false" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UNIDADE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idUnidade" Type="int" Nullable="false" />
+          <Property Name="unidade" Type="varchar(max)" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="varchar(max)" Nullable="false" />
+          <Property Name="responsavel" Type="varchar(max)" Nullable="false" />
+          <Property Name="cpf" Type="varchar(max)" Nullable="false" />
+          <Property Name="cargo" Type="varchar(max)" />
+          <Property Name="idDeposito" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ITENS_ENTRADA_ENTRADA">
+          <End Role="ENTRADA" Type="EstoqueModel.Store.ENTRADA" Multiplicity="1" />
+          <End Role="ITENS_ENTRADA" Type="EstoqueModel.Store.ITENS_ENTRADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTRADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ITENS_ENTRADA">
+              <PropertyRef Name="idEntrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITENS_ENTRADA_PRODUTO">
+          <End Role="PRODUTO" Type="EstoqueModel.Store.PRODUTO" Multiplicity="1" />
+          <End Role="ITENS_ENTRADA" Type="EstoqueModel.Store.ITENS_ENTRADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUTO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ITENS_ENTRADA">
+              <PropertyRef Name="idProduto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO">
+          <End Role="PLANEJAMENTO" Type="EstoqueModel.Store.PLANEJAMENTO" Multiplicity="1" />
+          <End Role="PLANEJAMENTO_ITENS_EXTRA" Type="EstoqueModel.Store.PLANEJAMENTO_ITENS_EXTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLANEJAMENTO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PLANEJAMENTO_ITENS_EXTRA">
+              <PropertyRef Name="idPlanejamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLANEJAMENTO_LISTA_BASICA">
+          <End Role="LISTA_BASICA" Type="EstoqueModel.Store.LISTA_BASICA" Multiplicity="1" />
+          <End Role="PLANEJAMENTO" Type="EstoqueModel.Store.PLANEJAMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_BASICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PLANEJAMENTO">
+              <PropertyRef Name="idListaBasica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_DEPOSITO">
+          <End Role="DEPOSITO" Type="EstoqueModel.Store.DEPOSITO" Multiplicity="1" />
+          <End Role="USUARIO" Type="EstoqueModel.Store.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPOSITO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="idDeposito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EstoqueModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="estoqueEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="EstoqueModel.sysdiagrams" />
+          <EntitySet Name="USUARIO" EntityType="EstoqueModel.USUARIO" />
+          <EntitySet Name="ENTRADA" EntityType="EstoqueModel.ENTRADA" />
+          <EntitySet Name="DEPOSITO" EntityType="EstoqueModel.DEPOSITO" />
+          <AssociationSet Name="FK_USUARIO_DEPOSITO" Association="EstoqueModel.FK_USUARIO_DEPOSITO">
+            <End Role="DEPOSITO" EntitySet="DEPOSITO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <EntitySet Name="CURSOS" EntityType="EstoqueModel.CURSOS" />
+          <EntitySet Name="UNIDADE" EntityType="EstoqueModel.UNIDADE" />
+          <EntitySet Name="TURMA" EntityType="EstoqueModel.TURMA" />
+          <EntitySet Name="DISCIPLINA" EntityType="EstoqueModel.DISCIPLINA" />
+          <EntitySet Name="DISCIPLINA_INSTRUTOR" EntityType="EstoqueModel.DISCIPLINA_INSTRUTOR" />
+          <EntitySet Name="INSTRUTOR" EntityType="EstoqueModel.INSTRUTOR" />
+          <EntitySet Name="PLANEJAMENTO" EntityType="EstoqueModel.PLANEJAMENTO" />
+          <EntitySet Name="LISTA_BASICA" EntityType="EstoqueModel.LISTA_BASICA" />
+          <AssociationSet Name="FK_PLANEJAMENTO_LISTA_BASICA" Association="EstoqueModel.FK_PLANEJAMENTO_LISTA_BASICA">
+            <End Role="LISTA_BASICA" EntitySet="LISTA_BASICA" />
+            <End Role="PLANEJAMENTO" EntitySet="PLANEJAMENTO" />
+          </AssociationSet>
+          <EntitySet Name="ENTRADA_AUXILIAR" EntityType="EstoqueModel.ENTRADA_AUXILIAR" />
+          <EntitySet Name="ITENS_ENTRADA" EntityType="EstoqueModel.ITENS_ENTRADA" />
+          <EntitySet Name="PRODUTO" EntityType="EstoqueModel.PRODUTO" />
+          <AssociationSet Name="FK_ITENS_ENTRADA_ENTRADA" Association="EstoqueModel.FK_ITENS_ENTRADA_ENTRADA">
+            <End Role="ENTRADA" EntitySet="ENTRADA" />
+            <End Role="ITENS_ENTRADA" EntitySet="ITENS_ENTRADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITENS_ENTRADA_PRODUTO" Association="EstoqueModel.FK_ITENS_ENTRADA_PRODUTO">
+            <End Role="PRODUTO" EntitySet="PRODUTO" />
+            <End Role="ITENS_ENTRADA" EntitySet="ITENS_ENTRADA" />
+          </AssociationSet>
+          <EntitySet Name="SAIDA_AUXILIAR" EntityType="EstoqueModel.SAIDA_AUXILIAR" />
+          <EntitySet Name="PLANEJAMENTO_AUXILIAR" EntityType="EstoqueModel.PLANEJAMENTO_AUXILIAR" />
+          <EntitySet Name="SAIDA" EntityType="EstoqueModel.SAIDA" />
+          <EntitySet Name="PLANEJAMENTO_ITENS_EXTRA" EntityType="EstoqueModel.PLANEJAMENTO_ITENS_EXTRA" />
+          <AssociationSet Name="FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO" Association="EstoqueModel.FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO">
+            <End Role="PLANEJAMENTO" EntitySet="PLANEJAMENTO" />
+            <End Role="PLANEJAMENTO_ITENS_EXTRA" EntitySet="PLANEJAMENTO_ITENS_EXTRA" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="responsavel" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cpf" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cargo" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idDeposito" Nullable="false" />
+          <NavigationProperty Name="DEPOSITO" Relationship="EstoqueModel.FK_USUARIO_DEPOSITO" FromRole="USUARIO" ToRole="DEPOSITO" />
+        </EntityType>
+        <EntityType Name="ENTRADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="dataEntrada" Nullable="false" Precision="3" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="observacao" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ITENS_ENTRADA" Relationship="EstoqueModel.FK_ITENS_ENTRADA_ENTRADA" FromRole="ENTRADA" ToRole="ITENS_ENTRADA" />
+        </EntityType>
+        <EntityType Name="DEPOSITO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="deposito" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+          <Property Type="Boolean" Name="status" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="EstoqueModel.FK_USUARIO_DEPOSITO" FromRole="DEPOSITO" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_USUARIO_DEPOSITO">
+          <End Type="EstoqueModel.DEPOSITO" Role="DEPOSITO" Multiplicity="1" />
+          <End Type="EstoqueModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPOSITO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="idDeposito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="String" Name="curso" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UNIDADE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+          <Property Type="String" Name="unidade" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TURMA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="String" Name="codTurma" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="codOrcamentario" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="turma" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="situacao" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dataInicial" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="dataFinal" Nullable="false" Precision="3" />
+          <Property Type="String" Name="horaInicial" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="horaFinal" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="turno" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="cargaHoraria" Nullable="false" />
+          <Property Type="Int32" Name="vagas" Nullable="false" />
+          <Property Type="Int32" Name="numAlunos" Nullable="false" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idDisciplina" Nullable="false" />
+          <Property Type="String" Name="disciplina" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dataInicial" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="dataFinal" Nullable="false" Precision="3" />
+          <Property Type="String" Name="horaInicial" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="horaFinal" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="cargaHoraria" Nullable="false" />
+          <Property Type="String" Name="supervisor" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cpfSupervisor" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="freqSemanal" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA_INSTRUTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idDisciplina" Nullable="false" />
+          <Property Type="Int64" Name="idInstrutor" Nullable="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSTRUTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="idInstrutor" Nullable="false" />
+          <Property Type="String" Name="instrutor" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cpf" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idUnidade" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="String" Name="codTurma" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idDisciplina" />
+          <Property Type="String" Name="aula" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idListaBasica" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int32" Name="quantidade" Nullable="false" />
+          <Property Type="Int64" Name="idInstrutor" />
+          <Property Type="Int32" Name="saldo" Nullable="false" />
+          <Property Type="DateTime" Name="dataPlanejamento" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LISTA_BASICA" Relationship="EstoqueModel.FK_PLANEJAMENTO_LISTA_BASICA" FromRole="PLANEJAMENTO" ToRole="LISTA_BASICA" />
+          <NavigationProperty Name="PLANEJAMENTO_ITENS_EXTRA" Relationship="EstoqueModel.FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO" FromRole="PLANEJAMENTO" ToRole="PLANEJAMENTO_ITENS_EXTRA" />
+        </EntityType>
+        <EntityType Name="LISTA_BASICA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idGrade" Nullable="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="String" Name="unidMedida" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="quantEstimada" />
+          <Property Type="String" Name="observacao" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PLANEJAMENTO" Relationship="EstoqueModel.FK_PLANEJAMENTO_LISTA_BASICA" FromRole="LISTA_BASICA" ToRole="PLANEJAMENTO" />
+        </EntityType>
+        <Association Name="FK_PLANEJAMENTO_LISTA_BASICA">
+          <End Type="EstoqueModel.LISTA_BASICA" Role="LISTA_BASICA" Multiplicity="1" />
+          <End Type="EstoqueModel.PLANEJAMENTO" Role="PLANEJAMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_BASICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PLANEJAMENTO">
+              <PropertyRef Name="idListaBasica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ENTRADA_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int32" Name="idDeposito" Nullable="false" />
+          <Property Type="DateTime" Name="dataVencimento" Precision="3" />
+          <Property Type="Int32" Name="quantEntrada" />
+          <Property Type="String" Name="localizacao" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="observacao" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITENS_ENTRADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="quantEntrada" />
+          <Property Type="String" Name="localizacao" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="valorUnitario" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="dataVencimento" Precision="3" />
+          <Property Type="Int32" Name="idEntrada" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int32" Name="idDeposito" Nullable="false" />
+          <Property Type="Int32" Name="idProduto" Nullable="false" />
+          <NavigationProperty Name="ENTRADA" Relationship="EstoqueModel.FK_ITENS_ENTRADA_ENTRADA" FromRole="ITENS_ENTRADA" ToRole="ENTRADA" />
+          <NavigationProperty Name="PRODUTO" Relationship="EstoqueModel.FK_ITENS_ENTRADA_PRODUTO" FromRole="ITENS_ENTRADA" ToRole="PRODUTO" />
+        </EntityType>
+        <EntityType Name="PRODUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="codBarra" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="String" Name="produto" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="unidMedida" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="valorUnitario" Precision="18" Scale="2" />
+          <NavigationProperty Name="ITENS_ENTRADA" Relationship="EstoqueModel.FK_ITENS_ENTRADA_PRODUTO" FromRole="PRODUTO" ToRole="ITENS_ENTRADA" />
+        </EntityType>
+        <Association Name="FK_ITENS_ENTRADA_ENTRADA">
+          <End Type="EstoqueModel.ENTRADA" Role="ENTRADA" Multiplicity="1" />
+          <End Type="EstoqueModel.ITENS_ENTRADA" Role="ITENS_ENTRADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTRADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ITENS_ENTRADA">
+              <PropertyRef Name="idEntrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITENS_ENTRADA_PRODUTO">
+          <End Type="EstoqueModel.PRODUTO" Role="PRODUTO" Multiplicity="1" />
+          <End Type="EstoqueModel.ITENS_ENTRADA" Role="ITENS_ENTRADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUTO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ITENS_ENTRADA">
+              <PropertyRef Name="idProduto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SAIDA_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="String" Name="aula" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO_AUXILIAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idPlanejamento" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int64" Name="idInstrutor" Nullable="false" />
+          <Property Type="Int32" Name="quantidade" Nullable="false" />
+          <Property Type="String" Name="justificativa" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="String" Name="aula" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAIDA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="dataSaida" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="despesaRealizada" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="quantidadeRetorno" Nullable="false" />
+          <Property Type="Decimal" Name="valorRetorno" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="aula" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idCurso" Nullable="false" />
+          <Property Type="Int32" Name="idUnidade" Nullable="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Boolean" Name="status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLANEJAMENTO_ITENS_EXTRA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idPlanejamento" Nullable="false" />
+          <Property Type="Int32" Name="codSei" Nullable="false" />
+          <Property Type="Int64" Name="idInstrutor" Nullable="false" />
+          <Property Type="Int32" Name="idTurma" Nullable="false" />
+          <Property Type="Int32" Name="quantidade" />
+          <Property Type="String" Name="justificativa" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PLANEJAMENTO" Relationship="EstoqueModel.FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO" FromRole="PLANEJAMENTO_ITENS_EXTRA" ToRole="PLANEJAMENTO" />
+        </EntityType>
+        <Association Name="FK_PLANEJAMENTO_ITENS_EXTRA_PLANEJAMENTO">
+          <End Type="EstoqueModel.PLANEJAMENTO" Role="PLANEJAMENTO" Multiplicity="1" />
+          <End Type="EstoqueModel.PLANEJAMENTO_ITENS_EXTRA" Role="PLANEJAMENTO_ITENS_EXTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLANEJAMENTO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PLANEJAMENTO_ITENS_EXTRA">
+              <PropertyRef Name="idPlanejamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="estoqueEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EstoqueModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="EstoqueModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="idDeposito" ColumnName="idDeposito" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTRADA">
+            <EntityTypeMapping TypeName="EstoqueModel.ENTRADA">
+              <MappingFragment StoreEntitySet="ENTRADA">
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="dataEntrada" ColumnName="dataEntrada" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPOSITO">
+            <EntityTypeMapping TypeName="EstoqueModel.DEPOSITO">
+              <MappingFragment StoreEntitySet="DEPOSITO">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="deposito" ColumnName="deposito" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURSOS">
+            <EntityTypeMapping TypeName="EstoqueModel.CURSOS">
+              <MappingFragment StoreEntitySet="CURSOS">
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNIDADE">
+            <EntityTypeMapping TypeName="EstoqueModel.UNIDADE">
+              <MappingFragment StoreEntitySet="UNIDADE">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="unidade" ColumnName="unidade" />
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TURMA">
+            <EntityTypeMapping TypeName="EstoqueModel.TURMA">
+              <MappingFragment StoreEntitySet="TURMA">
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="numAlunos" ColumnName="numAlunos" />
+                <ScalarProperty Name="vagas" ColumnName="vagas" />
+                <ScalarProperty Name="cargaHoraria" ColumnName="cargaHoraria" />
+                <ScalarProperty Name="turno" ColumnName="turno" />
+                <ScalarProperty Name="horaFinal" ColumnName="horaFinal" />
+                <ScalarProperty Name="horaInicial" ColumnName="horaInicial" />
+                <ScalarProperty Name="dataFinal" ColumnName="dataFinal" />
+                <ScalarProperty Name="dataInicial" ColumnName="dataInicial" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="turma" ColumnName="turma" />
+                <ScalarProperty Name="codOrcamentario" ColumnName="codOrcamentario" />
+                <ScalarProperty Name="codTurma" ColumnName="codTurma" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISCIPLINA">
+            <EntityTypeMapping TypeName="EstoqueModel.DISCIPLINA">
+              <MappingFragment StoreEntitySet="DISCIPLINA">
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="freqSemanal" ColumnName="freqSemanal" />
+                <ScalarProperty Name="cpfSupervisor" ColumnName="cpfSupervisor" />
+                <ScalarProperty Name="supervisor" ColumnName="supervisor" />
+                <ScalarProperty Name="cargaHoraria" ColumnName="cargaHoraria" />
+                <ScalarProperty Name="horaFinal" ColumnName="horaFinal" />
+                <ScalarProperty Name="horaInicial" ColumnName="horaInicial" />
+                <ScalarProperty Name="dataFinal" ColumnName="dataFinal" />
+                <ScalarProperty Name="dataInicial" ColumnName="dataInicial" />
+                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
+                <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISCIPLINA_INSTRUTOR">
+            <EntityTypeMapping TypeName="EstoqueModel.DISCIPLINA_INSTRUTOR">
+              <MappingFragment StoreEntitySet="DISCIPLINA_INSTRUTOR">
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="idInstrutor" ColumnName="idInstrutor" />
+                <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTRUTOR">
+            <EntityTypeMapping TypeName="EstoqueModel.INSTRUTOR">
+              <MappingFragment StoreEntitySet="INSTRUTOR">
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="instrutor" ColumnName="instrutor" />
+                <ScalarProperty Name="idInstrutor" ColumnName="idInstrutor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLANEJAMENTO">
+            <EntityTypeMapping TypeName="EstoqueModel.PLANEJAMENTO">
+              <MappingFragment StoreEntitySet="PLANEJAMENTO">
+                <ScalarProperty Name="dataPlanejamento" ColumnName="dataPlanejamento" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="idInstrutor" ColumnName="idInstrutor" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idListaBasica" ColumnName="idListaBasica" />
+                <ScalarProperty Name="aula" ColumnName="aula" />
+                <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
+                <ScalarProperty Name="codTurma" ColumnName="codTurma" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LISTA_BASICA">
+            <EntityTypeMapping TypeName="EstoqueModel.LISTA_BASICA">
+              <MappingFragment StoreEntitySet="LISTA_BASICA">
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="quantEstimada" ColumnName="quantEstimada" />
+                <ScalarProperty Name="unidMedida" ColumnName="unidMedida" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idGrade" ColumnName="idGrade" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTRADA_AUXILIAR">
+            <EntityTypeMapping TypeName="EstoqueModel.ENTRADA_AUXILIAR">
+              <MappingFragment StoreEntitySet="ENTRADA_AUXILIAR">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="localizacao" ColumnName="localizacao" />
+                <ScalarProperty Name="quantEntrada" ColumnName="quantEntrada" />
+                <ScalarProperty Name="dataVencimento" ColumnName="dataVencimento" />
+                <ScalarProperty Name="idDeposito" ColumnName="idDeposito" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITENS_ENTRADA">
+            <EntityTypeMapping TypeName="EstoqueModel.ITENS_ENTRADA">
+              <MappingFragment StoreEntitySet="ITENS_ENTRADA">
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idDeposito" ColumnName="idDeposito" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idEntrada" ColumnName="idEntrada" />
+                <ScalarProperty Name="dataVencimento" ColumnName="dataVencimento" />
+                <ScalarProperty Name="valorUnitario" ColumnName="valorUnitario" />
+                <ScalarProperty Name="localizacao" ColumnName="localizacao" />
+                <ScalarProperty Name="quantEntrada" ColumnName="quantEntrada" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUTO">
+            <EntityTypeMapping TypeName="EstoqueModel.PRODUTO">
+              <MappingFragment StoreEntitySet="PRODUTO">
+                <ScalarProperty Name="valorUnitario" ColumnName="valorUnitario" />
+                <ScalarProperty Name="unidMedida" ColumnName="unidMedida" />
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="codBarra" ColumnName="codBarra" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAIDA_AUXILIAR">
+            <EntityTypeMapping TypeName="EstoqueModel.SAIDA_AUXILIAR">
+              <MappingFragment StoreEntitySet="SAIDA_AUXILIAR">
+                <ScalarProperty Name="aula" ColumnName="aula" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLANEJAMENTO_AUXILIAR">
+            <EntityTypeMapping TypeName="EstoqueModel.PLANEJAMENTO_AUXILIAR">
+              <MappingFragment StoreEntitySet="PLANEJAMENTO_AUXILIAR">
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="aula" ColumnName="aula" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="justificativa" ColumnName="justificativa" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="idInstrutor" ColumnName="idInstrutor" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idPlanejamento" ColumnName="idPlanejamento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAIDA">
+            <EntityTypeMapping TypeName="EstoqueModel.SAIDA">
+              <MappingFragment StoreEntitySet="SAIDA">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="aula" ColumnName="aula" />
+                <ScalarProperty Name="valorRetorno" ColumnName="valorRetorno" />
+                <ScalarProperty Name="quantidadeRetorno" ColumnName="quantidadeRetorno" />
+                <ScalarProperty Name="despesaRealizada" ColumnName="despesaRealizada" />
+                <ScalarProperty Name="dataSaida" ColumnName="dataSaida" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLANEJAMENTO_ITENS_EXTRA">
+            <EntityTypeMapping TypeName="EstoqueModel.PLANEJAMENTO_ITENS_EXTRA">
+              <MappingFragment StoreEntitySet="PLANEJAMENTO_ITENS_EXTRA">
+                <ScalarProperty Name="justificativa" ColumnName="justificativa" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="idTurma" ColumnName="idTurma" />
+                <ScalarProperty Name="idInstrutor" ColumnName="idInstrutor" />
+                <ScalarProperty Name="codSei" ColumnName="codSei" />
+                <ScalarProperty Name="idPlanejamento" ColumnName="idPlanejamento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
